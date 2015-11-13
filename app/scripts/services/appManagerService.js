@@ -16,11 +16,16 @@ angular.module('teemOpsApp')
   	var retrieveAllApps = function(){
 
       storedApps = [];
-      
+
     	var keys = localStorageService.keys();
 
     	angular.forEach(keys, function(appId){
     		var app = localStorageService.get(appId);
+
+        //adding some temp app data
+        app.status = 'stopped';
+        app.cloudprovider = 'AWS';
+
     		storedApps.push(app);
     	});
     };
@@ -33,7 +38,7 @@ angular.module('teemOpsApp')
   	};
 
   	this.removeApp = function (appId){
-  		console.log('Remove app: ' + appId);
+  		localStorageService.remove(appId);
   	};
 
   	this.stopApp = function(appId){
