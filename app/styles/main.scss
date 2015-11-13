@@ -3,6 +3,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+@import "colors-and-fonts.scss";
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -10,96 +12,45 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 
+/* Master Layout */
+html, body, .container-fluid, .row {
+  height: 100%;
+}
+
+/* Base */
 body {
   padding: 0;
   font-family: 'Open Sans', 'Helvetica', 'Arial';
-  color: rgb(102, 102, 102);
+  color: $primary-text-color;
   font-size: 1.3em;
 }
 
-/* Utilities */
-.border-standard {
-  border: Solid 1px #CCC;
-  border-radius: 4px;
-}
-
-.full-width {
-  width: 100%;
-}
-
-
-
-/* form */
-.btn.btn-option {
-  border: Solid 1px #ccc;
-  margin-right: 20px;
-  border-radius: 4px !important;
-  padding: 25px 0px;
-  width: 80px;
-
-  &:hover { background-color: #efefef; }
-}
-
-.form-control {
-  &.inline {
-    display: inline-block;
-    width: auto;
-  }
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
+/* Page header */
+.header {
   padding-left: 15px;
   padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $primary-border-color;
   margin-bottom: 50px;
-  background: #FFF;
+  background: $header-bg-color;
 
-  /* Make the masthead heading the same height as the navigation */
+  // Make the masthead heading the same height as the navigation
   h3 {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
     padding-bottom: 19px;
   }
-}
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+  .navbar-default {
+    background-color: transparent;
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
+/* Main content */
+.row.main {
+  background-color: $main-bg-color;
 }
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -107,29 +58,17 @@ body {
     max-width: 730px;
   }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
+  // Remove the padding we set earlier & Space out the masthead
+  .header {
     padding-left: 0;
     padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
     margin-bottom: 50px;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
 }
 
-html, body, .container-fluid, .row {
-  height: 100%;
-}
-
+/* Side nav */
 .sidebar {
-  background-color: #30363e;
+  background-color: $sidebar-bg-color;
   padding-left:0;
   padding-right: 0;
 
@@ -147,8 +86,7 @@ html, body, .container-fluid, .row {
     bottom: 0;
     z-index: 1000;
     display: block;
-    background-color: rgb(48, 54, 62);
-
+    
     /* make sidebar nav vertical */ 
     .sidebar-nav .navbar .navbar-collapse {
       padding: 0;
@@ -163,7 +101,7 @@ html, body, .container-fluid, .row {
     .sidebar-nav .navbar li {
       float: none;
       display: block;
-      border-left: Solid 3px #30363e;
+      border-left: Solid 3px $sidebar-bg-color;;
 
       a {
         padding-top: 12px;
@@ -173,10 +111,10 @@ html, body, .container-fluid, .row {
       }
 
       &:hover,
-      &.active { border-left: Solid 3px #48c9a9;
+      &.active { border-left: Solid 3px $sidebar-nav-active-border-color;
         a {
-          color: #FFF;
-          background: #333;
+          color: $sidebar-nav-active-text-color;
+          background: $sidebar-nav-active-bg-color;
         }
       }
     }

@@ -14,17 +14,21 @@ angular.module('teemOpsApp')
   	var storedApps = [];
 
   	var retrieveAllApps = function(){
+
+      storedApps = [];
+      
     	var keys = localStorageService.keys();
 
     	angular.forEach(keys, function(appId){
     		var app = localStorageService.get(appId);
-    		storedApps.push({ appId: appId, app: app });
+    		storedApps.push(app);
     	});
     };
 
 
   	this.addApp = function (app){
-  		localStorageService.set('app-' + app.appName, app);
+      app.appId = 'teemOpsApp-' + app.appName.replace('', '-');
+  		localStorageService.set(app.appId, app);
 
   	};
 

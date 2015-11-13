@@ -1,0 +1,18 @@
+/* App list styles */
+.app-list {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+
+  > div[class*='-row'] {
+    display: table-row; height: 40px; line-height: 40px;
+
+    &.header-row { font-weight: 600; border-bottom: Solid 2px #f6bb42; }
+
+    > div {
+      display: table-cell;
+
+      &.actions { width: 150px !important; }
+    }
+  }
+}

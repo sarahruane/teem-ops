@@ -34,9 +34,14 @@ angular
         templateUrl: 'views/addapp.html',
         controller: 'AddAppCtrl'
       })
-      .state('about', {
-        url: '/about',
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .state('apps', {
+        url: '/apps',
+        templateUrl: 'views/apps.html',
+        controller: 'ViewAppsCtrl'
+      })
+      .state('apps.detail', {
+          url: '/detail/:id',
+          templateUrl: 'views/app-detail.html',
+          controller: 'AppDetailCtrl'
       });
   });

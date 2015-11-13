@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name yoAngularApp.controller:AddAppCtrl
+ * @name teemOpsApp.controller:AddAppCtrl
  * @description
  * # AddAppCtrl
- * Controller of the yoAngularApp
+ * Controller of the teemOpsApp
  */
 angular.module('teemOpsApp')
   .controller('AddAppCtrl', function ($scope, appManagerService) {

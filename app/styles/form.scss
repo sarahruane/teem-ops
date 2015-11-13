@@ -1,0 +1,17 @@
+/* Form */
+.btn.btn-option {
+  border: Solid 1px #ccc;
+  margin-right: 20px;
+  border-radius: 4px !important;
+  padding: 25px 0px;
+  width: 80px;
+
+  &:hover { background-color: #efefef; }
+}
+
+.form-control {
+  &.inline {
+    display: inline-block;
+    width: auto;
+  }
+}
