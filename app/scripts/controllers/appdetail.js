@@ -8,19 +8,20 @@
  * Controller of the teemOpsApp
  */
 angular.module('teemOpsApp')
-  .controller('AppDetailCtrl', function ($scope, $stateParams, $filter) {
+  .controller('AppDetailCtrl', function ($scope, appManagerService, $stateParams, $filter, $location, $anchorScroll) {
   	var self = this;
 
   	$scope.selectedApp = null;
 
     self.init = function(){
-    	var matches = $filter('filter')($scope.storedApps, { appId : $stateParams.id });
+    	$scope.selectedApp = appManagerService.getApp($stateParams.id);
+    };
 
-    	if(matches && matches.length > 0)
-    	{
-    		$scope.selectedApp = matches[0];
-    	}
-
+    $scope.scrolltoHref = function (id){
+        // set the location.hash to the id of the element to scroll to.
+        $location.hash(id);
+        // call $anchorScroll()
+        $anchorScroll();
     };
 
     self.init();

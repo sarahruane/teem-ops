@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'mgcrea.ngStrap'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     
@@ -39,8 +40,8 @@ angular
         templateUrl: 'views/apps.html',
         controller: 'ViewAppsCtrl'
       })
-      .state('apps.detail', {
-          url: '/detail/:id',
+      .state('detail', {
+          url: '/apps/detail/:id',
           templateUrl: 'views/app-detail.html',
           controller: 'AppDetailCtrl'
       });

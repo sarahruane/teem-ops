@@ -21,7 +21,7 @@
 		  	</div>
 		  	<div class="content-row" data-ng-repeat="app in storedApps">
 		  		<div class="appName">
-		  			<a ui-sref="apps.detail({ id: app.appId })">{{ app.appName }}</a>
+		  			<a ui-sref="detail({ id: app.appId })">{{ app.appName }}</a>
 		  		</div>
 		    	<div class="status">{{ app.status }}</div>
 		    	<div class="cloudProvider">{{ app.cloudProvider }}</div>
@@ -35,6 +35,6 @@
 		</div>
 	</div>
 </div>
-<div class="detail" ui-view></div>
+<!--<div class="detail" ui-view></div>-->
 
 

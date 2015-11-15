@@ -2,7 +2,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
-
 @import "colors-and-fonts.scss";
 
 .browsehappy {
@@ -12,12 +11,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 
-/* Master Layout */
-html, body, .container-fluid, .row {
-  height: 100%;
-}
-
-/* Base */
 body {
   padding: 0;
   font-family: 'Open Sans', 'Helvetica', 'Arial';
@@ -25,32 +18,26 @@ body {
   font-size: 1.3em;
 }
 
-/* Page header */
+html, body, .container-fluid, .row {
+  height: 100%;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
 .header {
   padding-left: 15px;
   padding-right: 15px;
   border-bottom: 1px solid $primary-border-color;
   margin-bottom: 50px;
-  background: $header-bg-color;
+  background: #FFF;
 
-  // Make the masthead heading the same height as the navigation
+  /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
     padding-bottom: 19px;
   }
-
-  .navbar-default {
-    background-color: transparent;
-  }
 }
-
-/* Main content */
-.row.main {
-  background-color: $main-bg-color;
-}
-
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -58,7 +45,7 @@ body {
     max-width: 730px;
   }
 
-  // Remove the padding we set earlier & Space out the masthead
+  /* Remove the padding we set earlier */
   .header {
     padding-left: 0;
     padding-right: 0;
@@ -86,7 +73,7 @@ body {
     bottom: 0;
     z-index: 1000;
     display: block;
-    
+
     /* make sidebar nav vertical */ 
     .sidebar-nav .navbar .navbar-collapse {
       padding: 0;
@@ -101,7 +88,7 @@ body {
     .sidebar-nav .navbar li {
       float: none;
       display: block;
-      border-left: Solid 3px $sidebar-bg-color;;
+      border-left: Solid 3px $sidebar-bg-color;
 
       a {
         padding-top: 12px;

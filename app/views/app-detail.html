@@ -1,1 +1,93 @@
-This is the app detail for {{ selectedApp.appName }}
+<div class="row">
+	<div class="col-xs-12">
+		<div>
+			<a ui-sref="apps"><< All Apps</a>
+		</div>
+		<h3>{{ selectedApp.appName }}</h3>
+	</div>
+</div>
+
+<div class="row clearfix app-details-container">
+	<div class="app-details-menu col-xs-3" role="complementary" data-offset-top="70" bs-affix>
+		<ul class="nav nav-pills nav-stacked">
+		  	<li bs-scrollspy data-target="#deploy">
+		  		<a href="" data-ng-click="scrolltoHref('deploy')">Deploy</a>
+		  	</li>
+		  	<li bs-scrollspy data-target="#infrastructure">
+		  		<a href="" data-ng-click="scrolltoHref('infrastructure')">Infrastructure</a>
+		  	</li>
+		  	<li bs-scrollspy data-target="#running-costs">
+		  		<a href="" data-ng-click="scrolltoHref('running-costs')">Running Costs</a>
+		  	</li>
+		  	<li bs-scrollspy data-target="#high-availability">
+		  		<a href="" data-ng-click="scrolltoHref('high-availability')">High Availability Settings</a>
+		  	</li>
+		  	<li bs-scrollspy data-target="#source-code">
+		  		<a href="" data-ng-click="scrolltoHref('source-code')">Source Code</a>
+		  	</li>
+		  	<li bs-scrollspy data-target="#scripts">
+		  		<a href="" data-ng-click="scrolltoHref('scripts')">Scripts</a>
+		  	</li>
+		  	<li bs-scrollspy data-target="#app-settings">
+		  		<a href="" data-ng-click="scrolltoHref('app-settings')">App Settings</a>
+		  	</li>
+		</ul>
+	</div>
+	<div class="app-details-content col-xs-9">
+	 	<div id="deploy">
+		  	<div class="panel panel-default full-width">
+				<div class="panel-heading">Deploy</div>
+				<div class="panel-body">
+					<div class="form-group">
+					  	<label for="cloudProvider">Deploy to</label><br/>
+					    <div class="btn-group">
+					        <label class="btn btn-option" name="cloudProvider" ng-model="app.cloudProvider" uib-btn-radio="'AWS'" required>AWS</label>
+					        <label class="btn btn-option" name="cloudProvider" ng-model="app.cloudProvider" uib-btn-radio="'Azure'" required>Azure</label>
+					        <label class="btn btn-option" name="cloudProvider" ng-model="app.cloudProvider" uib-btn-radio="'Google'" required>Google</label>
+					    </div>
+					</div>
+					<div class="pull-right">
+						<button class="btn btn-primary">Deploy now</button>
+						<button class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+	  	</div>
+	  	<div id="infrastructure">
+	  		<div class="panel panel-default">
+				<div class="panel-heading">Infrastructure</div>
+				<div class="panel-body"></div>
+			</div>
+		</div>
+	  	<div id="running-costs">
+	  		<div class="panel panel-default">
+				<div class="panel-heading">Running Costs</div>
+				<div class="panel-body"></div>
+			</div>
+		</div>
+		<div id="high-availability">
+	  		<div class="panel panel-default">
+				<div class="panel-heading">High Availability Settings</div>
+				<div class="panel-body"></div>
+			</div>
+		</div>
+		<div id="source-code">
+	  		<div class="panel panel-default">
+				<div class="panel-heading">Source Code</div>
+				<div class="panel-body"></div>
+			</div>
+		</div>
+		<div id="scripts">
+	  		<div class="panel panel-default">
+				<div class="panel-heading">Scripts</div>
+				<div class="panel-body"></div>
+			</div>
+		</div>
+		<div id="app-settings">
+	  		<div class="panel panel-default">
+				<div class="panel-heading">Basic App Settings</div>
+				<div class="panel-body"></div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -9,7 +9,7 @@
  */
 
 angular.module('teemOpsApp')
-  .service('appManagerService', function(localStorageService){
+  .service('appManagerService', function(localStorageService, $filter){
 
   	var storedApps = [];
 
@@ -24,7 +24,7 @@ angular.module('teemOpsApp')
 
         //adding some temp app data
         app.status = 'stopped';
-        app.cloudprovider = 'AWS';
+        app.cloudProvider = 'AWS';
 
     		storedApps.push(app);
     	});
@@ -34,8 +34,22 @@ angular.module('teemOpsApp')
   	this.addApp = function (app){
       app.appId = 'teemOpsApp-' + app.appName.replace('', '-');
   		localStorageService.set(app.appId, app);
-
   	};
+
+    this.getApp = function(appId){
+      if(storedApps.length === 0) {
+        retrieveAllApps();
+      }
+
+      var matches = $filter('filter')(storedApps, { appId : appId });
+
+      if(matches && matches.length > 0)
+      {
+        return matches[0];
+      }
+
+      return null;
+    };
 
   	this.removeApp = function (appId){
   		localStorageService.remove(appId);
