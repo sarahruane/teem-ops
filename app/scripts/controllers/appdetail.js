@@ -11,10 +11,16 @@ angular.module('teemOpsApp')
   .controller('AppDetailCtrl', function ($scope, appManagerService, $stateParams, $filter, $location, $anchorScroll) {
   	var self = this;
 
-  	$scope.selectedApp = null;
+  	$scope.currentApp = null;
+    $scope.editModes = {
+      'deploy' : false,
+      'infrastructure' : false,
+      'availability' : false,
+      'sourceCode' : false
+    };
 
     self.init = function(){
-    	$scope.selectedApp = appManagerService.getApp($stateParams.id);
+    	$scope.currentApp = appManagerService.getApp($stateParams.id);
     };
 
     $scope.scrolltoHref = function (id){
@@ -22,6 +28,16 @@ angular.module('teemOpsApp')
         $location.hash(id);
         // call $anchorScroll()
         $anchorScroll();
+    };
+
+    $scope.toggleEditMode = function(section) {
+      $scope.editModes[section] = !$scope.editModes[section];
+    };
+
+    $scope.saveApp = function(section){
+        
+        var success = appManagerService.saveApp($scope.currentApp);
+        $scope.editModes[section] = !success;
     };
 
     self.init();

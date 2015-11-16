@@ -53,19 +53,3 @@ $app-details-menu-width-mobile: 150px;
     }
   }
 }
-
-@media (min-width: 768px) {
-  .app-details-container {
-    > div.app-details-menu {
-      //min-width: $app-details-menu-width-desktop;
-
-      
-    }
-
-    > div {
-      .panel-body { min-height: 200px; }
-    }
-  }
-}
-
-

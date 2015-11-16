@@ -21,19 +21,14 @@ angular.module('teemOpsApp')
 
     	angular.forEach(keys, function(appId){
     		var app = localStorageService.get(appId);
-
-        //adding some temp app data
-        app.status = 'stopped';
-        app.cloudProvider = 'AWS';
-
-    		storedApps.push(app);
+        storedApps.push(app);
     	});
     };
 
 
   	this.addApp = function (app){
       app.appId = 'teemOpsApp-' + app.appName.replace('', '-');
-  		localStorageService.set(app.appId, app);
+  		return localStorageService.set(app.appId, app);
   	};
 
     this.getApp = function(appId){
@@ -58,6 +53,10 @@ angular.module('teemOpsApp')
   	this.stopApp = function(appId){
   		console.log('Stop app: ' + appId);
   	};
+
+    this.saveApp = function(app){
+      return localStorageService.set(app.appId, app);
+    };
 
   	this.allApps = function(){
   		retrieveAllApps();
