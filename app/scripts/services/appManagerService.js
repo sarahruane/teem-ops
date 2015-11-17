@@ -9,7 +9,7 @@
  */
 
 angular.module('teemOpsApp')
-  .service('appManagerService', function(localStorageService, $filter){
+  .service('appManagerService', function(localStorageService){
 
   	var storedApps = [];
 
@@ -32,18 +32,8 @@ angular.module('teemOpsApp')
   	};
 
     this.getApp = function(appId){
-      if(storedApps.length === 0) {
-        retrieveAllApps();
-      }
-
-      var matches = $filter('filter')(storedApps, { appId : appId });
-
-      if(matches && matches.length > 0)
-      {
-        return matches[0];
-      }
-
-      return null;
+      var app = localStorageService.get(appId);
+      return app;
     };
 
   	this.removeApp = function (appId){
@@ -55,7 +45,9 @@ angular.module('teemOpsApp')
   	};
 
     this.saveApp = function(app){
-      return localStorageService.set(app.appId, app);
+
+      localStorageService.set(app.appId, app);
+
     };
 
   	this.allApps = function(){

@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+	<div class="panel-heading clearfix">
+		<h4 class="pull-left">Infrastructure</h4>
+		<div edit-mode-panel 
+			edit-enabled="editModes.infrastructure" 
+			toggle="toggleEditMode('infrastructure')" 
+			save="saveApp('infrastructure')" 
+			class="pull-right">
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="form-group">
+		  	<label for="os">Operating System</label>
+		  	<span data-ng-hide="editModes.infrastructure" data-ng-cloak>
+		  		{{ currentApp.os.name || 'None selected' }}
+		  	</span>
+		  	<div data-ng-show="editModes.infrastructure" data-ng-cloak>
+			    <select id="os" name="os" class="form-control inline" data-ng-model="currentApp.os.name">
+			    	<option value="">Please select</option>
+		  			<option value="Redhat">Redhat</option>
+		  			<option value="Ubuntu">Ubuntu</option>
+		  			<option value="Windows">Windows</option>
+			    </select>
+			</div>
+		</div>
+	</div>
+</div>

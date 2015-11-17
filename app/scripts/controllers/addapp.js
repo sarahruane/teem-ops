@@ -8,11 +8,12 @@
  * Controller of the teemOpsApp
  */
 angular.module('teemOpsApp')
-  .controller('AddAppCtrl', function ($scope, appManagerService) {
+  .controller('AddAppCtrl', function ($scope, $timeout, appManagerService) {
     
     var self = this;
 
-    $scope.debug = true; 
+    $scope.processing = false;
+    $scope.debug = false; 
 
     $scope.app = {
     	appName: null,
@@ -35,12 +36,17 @@ angular.module('teemOpsApp')
 
     $scope.submit = function(isValid){
 
-  		if(isValid) {
-  			console.log($scope.app);
+      if(isValid) {
 
-  			appManagerService.addApp($scope.app);
+        $scope.processing = true;
+      
 
-  			$scope.storedApps = appManagerService.allApps();
+        $timeout(function() {
+
+    			appManagerService.addApp($scope.app);
+    			$scope.storedApps = appManagerService.allApps();
+          $scope.processing = false;
+        }, 100);
   		}
 
   	};

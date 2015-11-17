@@ -1,0 +1,56 @@
+<div class="panel panel-default full-width">
+	<div class="panel-heading clearfix">
+		<h4 class="pull-left">Deploy</h4>
+		<div edit-mode-panel 
+			edit-enabled="editModes.deploy" 
+			toggle="toggleEditMode('deploy')" 
+			save="saveApp('deploy')" 
+			class="pull-right">
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="form-group">
+		  	<label for="cloudProvider">Deploy to:</label>
+		  	<span data-ng-hide="editModes.deploy" data-ng-cloak>
+		  		{{ currentApp.cloud.provider || 'None selected' }}
+		  	</span>
+		  	<div data-ng-show="editModes.deploy" data-ng-cloak>
+			    <div class="btn-group">
+			        <label class="btn btn-option" name="cloudProvider" ng-model="currentApp.cloud.provider" uib-btn-radio="'AWS'" required>AWS</label>
+			        <label class="btn btn-option" name="cloudProvider" ng-model="currentApp.cloud.provider" uib-btn-radio="'Azure'" required>Azure</label>
+			        <label class="btn btn-option" name="cloudProvider" ng-model="currentApp.cloud.provider" uib-btn-radio="'Google'" required>Google</label>
+			    </div>
+			</div>
+		</div>
+		<div class="form-group">
+		  	<label for="cloudRegion">Region:</label>
+		  	<span data-ng-show="!editModes.deploy" data-ng-cloak>
+		  		{{ currentApp.cloud.region || 'None selected' }}
+		  	</span>
+		  	<div data-ng-show="editModes.deploy" data-ng-cloak>
+			  	<select id="cloudRegion" name="cloudRegion" class="form-control inline" data-ng-model="currentApp.cloud.region" >
+			  			<option value="">Please select</option>
+			  			<option value="asia">Asia</option>
+			  			<option value="europe">Europe</option>
+			  			<option value="north-america">North America</option>
+			  	</select>
+		  	</div>
+		</div>
+		<div class="form-group">
+		  	<label for="cloudRegion">Instance Size:</label>
+		  	<span data-ng-hide="editModes.deploy" data-ng-cloak>
+		  		{{ currentApp.cloud.instanceSize || 'None selected' }}
+		  	</span>
+		  	<div data-ng-show="editModes.deploy" data-ng-cloak>
+			  	<select id="instanceSize" name="instanceSize" class="form-control inline" data-ng-model="currentApp.cloud.instanceSize">
+			  			<option value="">Please select</option>
+			  			<option value="10GB">10GB</option>
+			  			<option value="20GB">20GB</option>
+			  			<option value="50GB">50GB</option>
+			  	</select>
+			</div>
+		</div>
+		
+		<button class="btn btn-primary" data-ng-enabled="currentApp.cloud.provider">Deploy now</button>
+	</div>
+</div>

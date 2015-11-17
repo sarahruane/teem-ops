@@ -8,7 +8,7 @@
  * Controller of the teemOpsApp
  */
 angular.module('teemOpsApp')
-  .controller('AppDetailCtrl', function ($scope, appManagerService, $stateParams, $filter, $location, $anchorScroll) {
+  .controller('AppDetailCtrl', function ($scope, $timeout, $stateParams, $filter, $location, $anchorScroll, appManagerService) {
   	var self = this;
 
   	$scope.currentApp = null;
@@ -18,6 +18,7 @@ angular.module('teemOpsApp')
       'availability' : false,
       'sourceCode' : false
     };
+    $scope.processing = false;
 
     self.init = function(){
     	$scope.currentApp = appManagerService.getApp($stateParams.id);
@@ -39,9 +40,14 @@ angular.module('teemOpsApp')
     };
 
     $scope.saveApp = function(section){
-        
-        var success = appManagerService.saveApp($scope.currentApp);
-        $scope.editModes[section] = !success;
+
+        $scope.processing = true;
+
+        $timeout(function() {
+          var success = appManagerService.saveApp($scope.currentApp);
+          $scope.editModes[section] = !success;
+           $scope.processing = false;
+        }, 10);
     };
 
     self.init();
