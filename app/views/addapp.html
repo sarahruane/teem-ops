@@ -50,7 +50,7 @@
 					        <label class="btn btn-option" name="environmentType" ng-model="app.environmentType" uib-btn-radio="'TEST'" required>Test</label>
 					        <label class="btn btn-option" name="environmentType" ng-model="app.environmentType" uib-btn-radio="'PROD'" required>Prod</label>
 					    </div>
-					     <span ng-show="(appForm.$submitted || appForm.environmentType.$touched) && appForm.environmentType.$invalid" class="alert alert-danger" role="alert">
+					    <span ng-show="(appForm.$submitted || appForm.environmentType.$touched) && appForm.environmentType.$invalid" class="alert alert-danger" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 							<span class="sr-only">Error:</span>
 					    	<span ng-show="appForm.environmentType.$error.required">Please select an environment type</span>
@@ -62,11 +62,11 @@
 				<div class="panel-heading">Databases (optional)</div>
 				<div class="panel-body">
 					<div class="form-group">
-					  	<label for="database">Choose database</label><br/>
+					  	<label for="database">Choose database(s)</label><br/>
 						<div class="btn-group">
-					        <label class="btn btn-option" name="database" ng-model="app.database" uib-btn-radio="'SQLSERVER'">SQL Server</label>
-					        <label class="btn btn-option" name="database" ng-model="app.database" uib-btn-radio="'MYSQL'">MySQL</label>
-					        <label class="btn btn-option" name="database" ng-model="app.database" uib-btn-radio="'MONGODB'">MongoDB</label>
+					        <label class="btn btn-option" name="database" ng-model="app.database.SQLSERVER" uib-btn-checkbox>SQL Server</label>
+					        <label class="btn btn-option" name="database" ng-model="app.database.MYSQL" uib-btn-checkbox>MySQL</label>
+					        <label class="btn btn-option" name="database" ng-model="app.database.MONGODB" uib-btn-checkbox>MongoDB</label>
 					    </div>
 					</div>
 				</div>
@@ -78,9 +78,23 @@
 					<div class="form-group">
 					  	<label for="caching">Choose caching server</label><br/>
 						<div class="btn-group">
-					        <label class="btn btn-option" name="caching" ng-model="app.caching" uib-btn-radio="'ELASTICACHE'">Elasticache</label>
-					        <label class="btn btn-option" name="caching" ng-model="app.caching" uib-btn-radio="'MEMCACHED'">Memcached</label>
+					        <label class="btn btn-option" name="caching" ng-model="app.caching.provider" uib-btn-radio="'ELASTICACHE'">Elasticache</label>
+					        <label class="btn btn-option" name="caching" ng-model="app.caching.provider" uib-btn-radio="'MEMCACHED'">Memcached</label>
 					    </div>
+					</div>
+					<div class="form-group">
+						<label for="cacheSize">Choose cache size</label><br/>
+					  	<select id="cacheSize" name="cacheSize" class="form-control inline" data-ng-model="currentApp.caching.size" data-ng-required="app.caching.provider">
+					  			<option value="">Please select</option>
+					  			<option value="1GB">1GB</option>
+					  			<option value="2GB">2GB</option>
+					  			<option value="4GB">5GB</option>
+					  	</select>
+					  	<span ng-show="(appForm.$submitted || appForm.cacheSize.$touched) && appForm.cacheSize.$invalid" class="alert alert-danger" role="alert">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							<span class="sr-only">Error:</span>
+					    	<span ng-show="appForm.environment.$error.required">Please select a cache size</span>
+					    </span>
 					</div>
 				</div>
 			</div>

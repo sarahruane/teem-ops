@@ -12,7 +12,7 @@ angular.module('teemOpsApp')
     
     var self = this;
 
-    $scope.debug = false; 
+    $scope.debug = true; 
 
     $scope.app = {
     	appName: null,

@@ -34,6 +34,10 @@ angular.module('teemOpsApp')
       $scope.editModes[section] = !$scope.editModes[section];
     };
 
+    $scope.editModeEnabled = function(section){
+        return $scope.editModes[section];
+    };
+
     $scope.saveApp = function(section){
         
         var success = appManagerService.saveApp($scope.currentApp);
