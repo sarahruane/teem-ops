@@ -50,5 +50,10 @@ angular.module('teemOpsApp')
         }, 10);
     };
 
+    $scope.delete = function(appId){
+      appManagerService.removeApp(appId);
+      $scope.storedApps = appManagerService.allApps();
+    };
+
     self.init();
 });

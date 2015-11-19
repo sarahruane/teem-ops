@@ -39,6 +39,10 @@ html, body, .container-fluid, .row {
   }
 }
 
+.main {
+  background-color: #f2f2f2;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {

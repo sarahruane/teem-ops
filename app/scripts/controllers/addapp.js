@@ -17,7 +17,8 @@ angular.module('teemOpsApp')
 
     $scope.app = {
     	appName: null,
-    	environment: null,
+      appUrl: null,
+      environment: null,
     	environmentType: null,
     	database: null,
     	caching: null,

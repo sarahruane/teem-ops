@@ -20,10 +20,16 @@ angular.module('teemOpsApp')
       },
       template: 
         '<div>' +
-          '<button class="btn btn-secondary" data-ng-hide="editEnabled" data-ng-click="toggle({section: section})" data-ng-cloak>Edit</button>' +
+          '<button class="btn btn-edit-menu" data-ng-hide="editEnabled" data-ng-click="toggle({section: section})" data-ng-cloak>' +
+            '<i class="fa fa-pencil"></i>&nbsp;Edit' + 
+          '</button>' +
           '<div class="button-group" data-ng-cloak data-ng-show="editEnabled">' +
-            '<button class="btn btn-primary" data-ng-click="save({section: section})">Save changes</button>' +
-            '<button class="btn btn-secondary" data-ng-click="toggle({section: section})">Cancel</button>' +
+            '<button class="btn btn-edit-menu" data-ng-click="save({section: section})">' +
+              '<i class="fa fa-save"></i>&nbsp;Save Changes' + 
+            '</button>' +
+            '<button class="btn btn-cancel" data-ng-click="toggle({section: section})">' +
+              '<i class="fa fa-close"></i>&nbsp;Cancel' +
+            '</button>' +
           '</div>' +
         '</div>'
     };

@@ -1,5 +1,5 @@
 
-<h1>Add an app</h1>
+<h3>Add an app</h3>
 
 <form name="appForm" ng-submit="submit(appForm.$valid)" novalidate>
 	<div class="row">
@@ -15,13 +15,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-12">
+	<div class="row clearfix add-app-container">
+		<div class="col-sm-9 col-xs-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">App basics (required)</div>
+				<div class="panel-heading"><h4>App basics (required)</h4></div>
 				<div class="panel-body">
 					<div class="form-group">
-					  	<label for="appName">App name</label>
+					  	<label for="appName" class="lbl">App name</label>
 						<input type="text" id="appName" name="appName" class="form-control inline" data-ng-model="app.appName" required>
 						<span ng-show="(appForm.$submitted || appForm.appName.$touched) && appForm.appName.$invalid" class="alert alert-danger" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -31,11 +31,27 @@
 					    </span>
 					</div>
 					<div class="form-group">
-					    <label for="environment">Choose environment</label><br/>
+					  	<label for="appName" class="lbl">App Url</label>
+						<input type="text" id="appUrl" name="appUrl" class="form-control inline" data-ng-model="app.appUrl" required><span>&nbsp;.teemops.com</span>
+						<span ng-show="(appForm.$submitted || appForm.appUrl.$touched) && appForm.appUrl.$invalid" class="alert alert-danger" role="alert">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							<span class="sr-only">Error:</span>
+					    	<span ng-show="appForm.appUrl.$error.required">Please fill in an app url</span>
+					    	<!-- TODO: Add custom validation to check app name is not already taken -->
+					    </span>
+					</div>
+					<div class="form-group">
+					    <label for="environment" class="lbl">Choose environment</label><br/>
 					    <div class="btn-group">
 					        <label class="btn btn-option" name="environment" ng-model="app.environment" uib-btn-radio="'LAMP'" required>LAMP</label>
 					        <label class="btn btn-option" name="environment" ng-model="app.environment" uib-btn-radio="'NGINX'" required>NGINX</label>
 					        <label class="btn btn-option" name="environment" ng-model="app.environment" uib-btn-radio="'ASPNET'" required>ASP.NET</label>
+					    </div>
+					    <div>OR</div>
+						<label for="environment">Choose prebuilt environment</label><br/>
+					    <div class="btn-group">
+					        <label class="btn btn-option" name="environment" ng-model="app.environment" uib-btn-radio="'Drupal'" required>Drupal</label>
+					        <label class="btn btn-option" name="environment" ng-model="app.environment" uib-btn-radio="'Wordpress'" required>Wordpress</label>
 					    </div>
 					    <span ng-show="(appForm.$submitted || appForm.environment.$touched) && appForm.environment.$invalid" class="alert alert-danger" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -43,7 +59,7 @@
 					    	<span ng-show="appForm.environment.$error.required">Please select an environment</span>
 					    </span>
 				  	</div>
-					<div class="form-group">
+					<!--<div class="form-group">
 					    <label for="environmentType">Choose environment type</label><br/>
 					    <div class="btn-group">
 					        <label class="btn btn-option" name="environmentType" ng-model="app.environmentType" uib-btn-radio="'DEV'" required>Dev</label>
@@ -55,11 +71,11 @@
 							<span class="sr-only">Error:</span>
 					    	<span ng-show="appForm.environmentType.$error.required">Please select an environment type</span>
 					    </span>
-					  </div>
+					  </div>-->
 				</div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">Databases (optional)</div>
+				<div class="panel-heading"><h4>Databases (optional)</h4></div>
 				<div class="panel-body">
 					<div class="form-group">
 					  	<label for="database">Choose database(s)</label><br/>
@@ -73,7 +89,7 @@
 			</div>
 
 			<div class="panel panel-default">
-				<div class="panel-heading">Caching (optional)</div>
+				<div class="panel-heading"><h4>Caching (optional)</h4></div>
 				<div class="panel-body">
 					<div class="form-group">
 					  	<label for="caching">Choose caching server</label><br/>
@@ -83,8 +99,8 @@
 					    </div>
 					</div>
 					<div class="form-group">
-						<label for="cacheSize">Choose cache size</label><br/>
-					  	<select id="cacheSize" name="cacheSize" class="form-control inline" data-ng-model="currentApp.caching.size" data-ng-required="app.caching.provider">
+						<label for="cacheSize" class="lbl">Choose cache size</label><br/>
+					  	<select id="cacheSize" name="cacheSize" class="form-control inline" data-ng-model="app.caching.size" data-ng-required="app.caching.provider">
 					  			<option value="">Please select</option>
 					  			<option value="1GB">1GB</option>
 					  			<option value="2GB">2GB</option>
@@ -93,14 +109,14 @@
 					  	<span ng-show="(appForm.$submitted || appForm.cacheSize.$touched) && appForm.cacheSize.$invalid" class="alert alert-danger" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 							<span class="sr-only">Error:</span>
-					    	<span ng-show="appForm.environment.$error.required">Please select a cache size</span>
+					    	<span ng-show="appForm.cacheSize.$error.required">Please select a cache size</span>
 					    </span>
 					</div>
 				</div>
 			</div>
 
 			<div class="panel panel-default">
-				<div class="panel-heading">Source Code (optional)</div>
+				<div class="panel-heading"><h4>Source Code (optional)</h4></div>
 				<div class="panel-body">
 					<div class="form-group">
 					  	<label for="sourceCode">App source code will come from</label><br/>
@@ -111,7 +127,7 @@
 					    </div>
 					</div>
 					<div class="form-group" data-ng-show="app.sourceCode.source === 'GIT'">
-						<label for="githubRepo">Enter GitHub repo</label>
+						<label for="githubRepo" class="lbl">Enter GitHub repo</label>
 						<input type="text" id="githubRepo" name="githubRepo" class="form-control inline" data-ng-model="app.sourceCode.path" data-ng-required="app.sourceCode.source === 'GIT'">
 						<span ng-show="(appForm.$submitted || appForm.sourceCode.$touched) && appForm.githubRepo.$invalid" class="alert alert-danger" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -120,23 +136,34 @@
 					    </span>
 					</div>
 					<div class="form-group" data-ng-show="app.sourceCode.source === 'SVN'">
-						<label for="svnRepo">Enter SVN repo</label>
+						<label for="svnRepo" class="lbl">Enter SVN repo</label>
 						<p>Coming soon!</p>
 					</div>
 					<div class="form-group" data-ng-show="app.sourceCode.source === 'FILEUPLOAD'">
-						<label for="fileUpload">Browse for file</label>
+						<label for="fileUpload" class="lbl">Browse for file</label>
 						<p>Coming soon!</p>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12">
-			<button type="submit" class="btn btn-primary full-width">
-				<i data-ng-show="processing" class="fa fa-spinner fa-pulse"></i>
-        		Create my app
-        	</button>
+		<div class="col-sm-3 col-xs-12 add-app-sidebar" data-offset-top="40" bs-affix>
+			<div class="sidebar-content">
+				<label>App Name</label><span>{{ app.appName || 'none' }}</span><br/>
+				<label>App Url</label><span>{{ app.appUrl || 'xxx' }}.teemops.com</span><br/>
+				<label>Environment</label><span>{{ app.environment || 'none' }}</span><br/>
+				<label>Databases</label>
+				<span>{{ app.database || 'none' }}</span><br/>
+				<label>Caching</label>
+				<span>{{ app.caching.provider || 'none' }}</span>
+				<span>&nbsp;{{ app.caching.size || '' }}</span><br/>
+				<label>Source Code:</label>
+				<span>{{ app.sourceCode.source || 'none' }}</span>
+				<span>&nbsp;{{ app.sourceCode.path || '' }}</span><br/><br/>
+				<button type="submit" class="btn btn-primary full-width">
+					<i data-ng-show="processing" class="fa fa-spinner fa-pulse"></i>
+	        		Create my app
+	        	</button>
+			</div>
 		</div>
 	</div>
 </form>

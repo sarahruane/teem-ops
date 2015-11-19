@@ -46,7 +46,7 @@ angular.module('teemOpsApp')
 
     this.saveApp = function(app){
 
-      localStorageService.set(app.appId, app);
+      return localStorageService.set(app.appId, app);
 
     };
 

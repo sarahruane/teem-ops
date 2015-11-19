@@ -1,56 +1,80 @@
-<div class="panel panel-default full-width">
-	<div class="panel-heading clearfix">
-		<h4 class="pull-left">Deploy</h4>
-		<div edit-mode-panel 
-			edit-enabled="editModes.deploy" 
-			toggle="toggleEditMode('deploy')" 
-			save="saveApp('deploy')" 
-			class="pull-right">
-		</div>
-	</div>
-	<div class="panel-body">
-		<div class="form-group">
-		  	<label for="cloudProvider">Deploy to:</label>
-		  	<span data-ng-hide="editModes.deploy" data-ng-cloak>
-		  		{{ currentApp.cloud.provider || 'None selected' }}
-		  	</span>
-		  	<div data-ng-show="editModes.deploy" data-ng-cloak>
-			    <div class="btn-group">
-			        <label class="btn btn-option" name="cloudProvider" ng-model="currentApp.cloud.provider" uib-btn-radio="'AWS'" required>AWS</label>
-			        <label class="btn btn-option" name="cloudProvider" ng-model="currentApp.cloud.provider" uib-btn-radio="'Azure'" required>Azure</label>
-			        <label class="btn btn-option" name="cloudProvider" ng-model="currentApp.cloud.provider" uib-btn-radio="'Google'" required>Google</label>
-			    </div>
+<form name="deployForm" id="deployForm" novalidate>
+	<div class="panel panel-default full-width">
+		<div class="panel-heading clearfix">
+			<h4 class="pull-left">
+				Deploy
+				<!--<button class="btn btn-primary" data-ng-enabled="currentApp.cloud.provider">Deploy now</button>-->
+			</h4>
+			<div edit-mode-panel 
+				edit-enabled="editModes.deploy" 
+				toggle="toggleEditMode('deploy')" 
+				save="saveApp('deploy')" 
+				class="pull-right">
 			</div>
 		</div>
-		<div class="form-group">
-		  	<label for="cloudRegion">Region:</label>
-		  	<span data-ng-show="!editModes.deploy" data-ng-cloak>
-		  		{{ currentApp.cloud.region || 'None selected' }}
-		  	</span>
-		  	<div data-ng-show="editModes.deploy" data-ng-cloak>
-			  	<select id="cloudRegion" name="cloudRegion" class="form-control inline" data-ng-model="currentApp.cloud.region" >
-			  			<option value="">Please select</option>
-			  			<option value="asia">Asia</option>
-			  			<option value="europe">Europe</option>
-			  			<option value="north-america">North America</option>
-			  	</select>
-		  	</div>
-		</div>
-		<div class="form-group">
-		  	<label for="cloudRegion">Instance Size:</label>
-		  	<span data-ng-hide="editModes.deploy" data-ng-cloak>
-		  		{{ currentApp.cloud.instanceSize || 'None selected' }}
-		  	</span>
-		  	<div data-ng-show="editModes.deploy" data-ng-cloak>
-			  	<select id="instanceSize" name="instanceSize" class="form-control inline" data-ng-model="currentApp.cloud.instanceSize">
-			  			<option value="">Please select</option>
-			  			<option value="10GB">10GB</option>
-			  			<option value="20GB">20GB</option>
-			  			<option value="50GB">50GB</option>
-			  	</select>
+		<div class="panel-body">
+			<div class="col-sm-7">
+				<div class="form-group">
+				  	<label for="cloudProvider" class="lbl">Deploy to</label>
+				  	<span data-ng-hide="editModes.deploy" data-ng-cloak>
+				  		<img data-ng-show="currentApp.cloud.provider" data-ng-src="/images/{{ currentApp.cloud.provider}}-logo.png" style="width: 110px" alt="Amazon Web Services"/>
+				  		<span data-ng-show="!currentApp.cloud.provider">None selected</span>
+				  	</span>
+				  	<div data-ng-show="editModes.deploy" class="cloud-providers clearfix" data-ng-cloak>
+					    <div class="btn-group">
+					        <label class="btn btn-option" name="cloudProvider" data-ng-model="currentApp.cloud.provider" uib-btn-radio="'AWS'" required>
+					        	<img src="/images/aws-logo.png" style="width: 110px" alt="Amazon Web Services">
+					        </label>
+					        <label class="btn btn-option" name="cloudProvider" data-ng-model="currentApp.cloud.provider" uib-btn-radio="'Azure'" required>
+					        	<img src="/images/azure-logo.png" style="width: 110px" alt="Azure">
+					       	</label>
+					        <label class="btn btn-option" name="cloudProvider" data-ng-model="currentApp.cloud.provider" uib-btn-radio="'Google-Cloud'" required>
+					        	<img src="/images/google-cloud-logo.png" style="width: 110px" alt="Google Cloud">
+					        </label>
+					    </div>
+					</div>
+				</div>
+				<div class="form-group" data-ng-show="currentApp.cloud.provider">
+				  	<label for="cloudRegion" class="lbl">Region</label>
+				  	<span data-ng-show="!editModes.deploy" data-ng-cloak>
+				  		{{ currentApp.cloud.region || 'None selected' }}
+				  	</span>
+				  	<span data-ng-show="editModes.deploy" data-ng-cloak>
+					  	<select id="cloudRegion" name="cloudRegion" class="form-control inline" data-ng-model="currentApp.cloud.region" >
+					  			<option value="">Please select</option>
+					  			<option value="asia">Asia</option>
+					  			<option value="europe">Europe</option>
+					  			<option value="north-america">North America</option>
+					  	</select>
+				  	</span>
+				</div>
+				<div class="form-group" data-ng-show="currentApp.cloud.provider">
+				  	<label for="cloudRegion" class="lbl">Instance Size</label>
+				  	<span data-ng-hide="editModes.deploy" data-ng-cloak>
+				  		{{ currentApp.cloud.instanceSize || 'None selected' }}
+				  	</span>
+				  	<span data-ng-show="editModes.deploy" data-ng-cloak>
+					  	<select id="instanceSize" name="instanceSize" class="form-control inline" data-ng-model="currentApp.cloud.instanceSize">
+					  			<option value="">Please select</option>
+					  			<option value="t2.medium">t2.medium</option>
+					  			<option value="t2.large">t2.large</option>
+					  			<option value="m3.medium">m3.medium</option>
+					  			<option value="m3.large">m3.large</option>
+					  			<option value="m4.xlarge">m4.xlarge</option>
+					  			<option value="c3.8xlarge">c3.8xlarge</option>
+					  	</select>
+					</span>
+				</div>
+			</div>
+			<div class="col-sm-5" data-ng-show="editModes.deploy">
+				<h4>Not sure which options to choose?</h4>
+				<input class="with-font" name="cloudProvider" id="cloudProvider1" type="checkbox" 
+				    		data-ng-model="currentApp.cloud.teemops" data-ng-value="'TeemOps'" required />
+	        	<label for="cloudProvider1" style="display: inline-block">
+	        		Let TeemOps guide me through my deployment
+	        	</label>
+	        	<a href="#">Contact us today</a>
 			</div>
 		</div>
-		
-		<button class="btn btn-primary" data-ng-enabled="currentApp.cloud.provider">Deploy now</button>
 	</div>
-</div>
+</form>

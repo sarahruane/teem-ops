@@ -1,12 +1,60 @@
 /* Form */
+.btn {
+  border-radius: 0;
+}
+
 .btn.btn-option {
   border: Solid 1px #ccc;
   margin-right: 20px;
-  border-radius: 4px !important;
+  border-radius: 0 !important;
   padding: 25px 0px;
-  width: 80px;
+  width: 120px;
+  height: 120px;
 
-  &:hover { background-color: #efefef; }
+  &:hover { 
+    border: Solid 1px #f6bb42;
+    box-shadow: none; 
+  }
+
+  &.active {
+    border: Solid 1px #f6bb42;
+    box-shadow: 0 0 10px #f6bb42;
+    border-radius: 3px !important;
+  }
+}
+
+.btn.btn-dark {
+  background-color: #30363e;
+  border-radius: 0;
+  color: #FFF;
+
+  &:hover {
+    background-color: #3b3f4f;
+  }
+}
+
+.btn.btn-primary {
+  background-color: #4A89DC;
+}
+
+.btn.btn-edit-menu {
+  border: Solid 1px #ccc;
+  color: #37bc9b;
+  background-color: #FFF;
+}
+
+.btn.btn-cancel {
+  color: #e9573f;
+  background-color: #FFF;
+  border: Solid 1px #ccc;
+}
+
+.btn.btn-success {
+  background-color: #70CA63;
+}
+
+.btn.btn-danger {
+  background-color: #E9573F;
 }
 
 .form-control {
@@ -16,17 +64,39 @@
   }
 }
 
-.glyphicon.spinning {
-    animation: spin 1s infinite linear;
-    -webkit-animation: spin2 1s infinite linear;
+input[type=checkbox].with-font {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+    
+input[type=checkbox].with-font + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f1db";
+    letter-spacing: 5px;
+    font-size: 1.6em;
+    color: #535353;
+}
+input[type=checkbox].with-font:checked + label:before {
+    content: "\f00c";
+    font-size: 1.6em;
+    color: rgb(154, 205, 50);
+    letter-spacing: 0;
+}
+input[type=checkbox].with-font:focus + label:before {
+    font-weight: bold;
+    color:orange;
 }
 
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg);}
-    to { transform: scale(1) rotate(360deg);}
-}
-
-@-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
+form {
+  .lbl { width: 135px; }
+  .form-control.inline {
+    select { width: 150px; }
+  }
 }

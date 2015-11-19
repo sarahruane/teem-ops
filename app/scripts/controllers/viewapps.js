@@ -19,11 +19,6 @@ angular.module('teemOpsApp')
     	$scope.storedApps = appManagerService.allApps();
     };
 
-    $scope.delete = function(appId){
-    	appManagerService.removeApp(appId);
-	    $scope.storedApps = appManagerService.allApps();
-    };
-
     $scope.copy = function(appId){
     	var appToCopy = appManagerService.getApp(appId);
     	appToCopy.appName += '-copy';
