@@ -8,7 +8,7 @@
  * Controller of the teemOpsApp
  */
 angular.module('teemOpsApp')
-  .controller('AppDetailCtrl', function ($scope, $timeout, $stateParams, $filter, $location, $anchorScroll, appManagerService) {
+  .controller('AppDetailCtrl', function ($scope, $timeout, $state, $stateParams, $filter, $location, $anchorScroll, appManagerService) {
   	var self = this;
 
   	$scope.currentApp = null;
@@ -52,7 +52,8 @@ angular.module('teemOpsApp')
 
     $scope.delete = function(appId){
       appManagerService.removeApp(appId);
-      $scope.storedApps = appManagerService.allApps();
+
+      $state.go('apps');
     };
 
     self.init();
