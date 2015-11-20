@@ -17,19 +17,23 @@
 				<div class="form-group">
 				  	<label for="cloudProvider" class="lbl">Deploy to</label>
 				  	<span data-ng-hide="editModes.deploy" data-ng-cloak>
-				  		<img data-ng-show="currentApp.cloud.provider" data-ng-src="/images/{{ currentApp.cloud.provider}}-logo.png" style="width: 110px" alt="Amazon Web Services"/>
+				  		<img data-ng-show="currentApp.cloud.provider==='AWS'" data-ng-src="/images/aws-logo.png" 
+				  			style="width: 110px" alt="Amazon Web Services"/>
+				  		<img data-ng-show="currentApp.cloud.provider==='Azure'" data-ng-src="/images/azure-logo.png" 
+				  			style="width: 110px" alt="Azure"/>
+				  		<img data-ng-show="currentApp.cloud.provider==='Google-Cloud'" data-ng-src="/images/google-cloud-logo.png" style="width: 110px" alt="Google Cloud"/>
 				  		<span data-ng-show="!currentApp.cloud.provider">None selected</span>
 				  	</span>
 				  	<div data-ng-show="editModes.deploy" class="cloud-providers clearfix" data-ng-cloak>
 					    <div class="btn-group">
 					        <label class="btn btn-option" name="cloudProvider" data-ng-model="currentApp.cloud.provider" uib-btn-radio="'AWS'" required>
-					        	<img src="/images/aws-logo.png" style="width: 110px" alt="Amazon Web Services">
+					        	<img data-ng-src="/images/aws-logo.png" style="width: 110px" alt="Amazon Web Services">
 					        </label>
 					        <label class="btn btn-option" name="cloudProvider" data-ng-model="currentApp.cloud.provider" uib-btn-radio="'Azure'" required>
-					        	<img src="/images/azure-logo.png" style="width: 110px" alt="Azure">
+					        	<img data-ng-src="/images/azure-logo.png" style="width: 110px" alt="Azure">
 					       	</label>
 					        <label class="btn btn-option" name="cloudProvider" data-ng-model="currentApp.cloud.provider" uib-btn-radio="'Google-Cloud'" required>
-					        	<img src="/images/google-cloud-logo.png" style="width: 110px" alt="Google Cloud">
+					        	<img data-ng-src="/images/google-cloud-logo.png" style="width: 110px" alt="Google Cloud">
 					        </label>
 					    </div>
 					</div>

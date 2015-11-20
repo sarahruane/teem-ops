@@ -12,12 +12,12 @@
   height: 120px;
 
   &:hover { 
-    border: Solid 1px #f6bb42;
+    border-color: #f6bb42;
     box-shadow: none; 
   }
 
   &.active {
-    border: Solid 1px #f6bb42;
+    border-color: #f6bb42;
     box-shadow: 0 0 10px #f6bb42;
     border-radius: 3px !important;
   }
